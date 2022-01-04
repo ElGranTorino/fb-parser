@@ -50,13 +50,13 @@ class Parser(object):
         parser.add_argument('-k', '--key-list', metavar='', type=str,
                     help='Путь к файлу со списком ключей поиска')
         parser.add_argument('-f', '--file', metavar='', type=str,
-                    help='Файл с результами парсинга')
+                    help='Имя файла в который вносятся результаты парсинга')
         parser.add_argument('-t', '--table', metavar='', type=bool, nargs='?',
                     help='Выводить результаты парсинга в консоль', default=False, const=True)
         parser.add_argument('-d', '--deep', metavar='', type=bool, nargs='?',
-                    help='Выводить результаты парсинга в консоль', default=False, const=True)
+                    help='Расширенный парсинг, искать объявления в которых не указан номер телефона', default=False, const=True)
         parser.add_argument('--scroll', metavar='', type=int, default=5,
-                    help='Количество экранов на которое парсер опустит экран браузера')
+                    help='Количество экранов на которое программа опустит экран браузера')
         parser.add_argument('--pause', metavar='', type=float, default=3,
                     help='Количество секунд между скроллом')
         args = parser.parse_args()
