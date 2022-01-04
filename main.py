@@ -61,6 +61,7 @@ class Parser(object):
                     help='Количество секунд между скроллом')
         args = parser.parse_args()
         return args
+
     def check_contacts(text, contact_list):
         for contact in contact_list:
             x = re.search(contact, text)
@@ -68,6 +69,7 @@ class Parser(object):
                 return True
             else:
                 continue
+
     def check_keys(body, keys):
         """[summary]
         Функция которая с помощью перебора проверяет есть ли заданый элемент списка в строке
@@ -84,6 +86,7 @@ class Parser(object):
                 return True
             else:
                 continue
+
     def generate_console_table(table):
         """[summary]
         Функция которая рисует таблицу
@@ -110,6 +113,7 @@ class Parser(object):
             console.print(table)
         else:
             return
+
     def fb_authentication():
         """[summary]
             Функция авторизации на Facebook
@@ -131,6 +135,7 @@ class Parser(object):
                 Parser.fb_authentication()
         except NoSuchElementException:
             console.print("[green] Авторизация прошла успешно [/green]")
+
     def get_group_list(group_list_name):
         """[summary]
         Функция которая находит список групп по которым осуществлять парсинг
@@ -152,6 +157,7 @@ class Parser(object):
                 return groups
         except FileNotFoundError:
             return console.print("[red] Файла {} не существует [/red]".format(group_list_name))
+
     def get_key_list(key_list_name):
         """[summary]
         Функция которая находит список ключей по которым осуществлять парсинг
@@ -173,6 +179,7 @@ class Parser(object):
                 return keys
         except FileNotFoundError:
             return console.print("[red] Файла {} не существует [/red]".format(key_list_name))
+
     def get_html(url, scroll, pause):
         """[summary]
         Функция которая выполняет переход по url, скроллит страницу и получает её код
@@ -191,6 +198,7 @@ class Parser(object):
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             sleep(pause)
         return driver.page_source
+
     def parse_url(html, locations, keys, deep):
         """[summary]
         Функция которая парсит полученный html
@@ -267,6 +275,7 @@ class Parser(object):
                             pass
 
             i += 1
+
     def cleaned_href(attribute):
         """[summary]
         Функция которая создает обёртку для ссылки, для её подальшего вывода в консоль
@@ -279,6 +288,7 @@ class Parser(object):
         href = attribute.replace(']', "%5D").replace('[', '%5B')
         link_wrap = "[link={}]Аккаунт_пользователя[/link]!".format(href)
         return link_wrap
+
     def get_phone_number(body, locations):
         """[summary]
             Функция которая ищет номера телефонов в body которые соответствуют заданой locations
@@ -295,6 +305,7 @@ class Parser(object):
             for match in phonenumbers.PhoneNumberMatcher(body, location):
                 phones_arr.append(phonenumbers.format_number(match.number, phonenumbers.PhoneNumberFormat.E164))
         return phones_arr
+
     def save_output_file(filename, arr):
         """[summary]
         Функция которая сохраняет результат парсинга в файле
@@ -306,6 +317,7 @@ class Parser(object):
             writer = csv.writer(f)
             for item in arr:
                 writer.writerow(item)
+				
     def main():
         '''
         Функция которая запускает программу
