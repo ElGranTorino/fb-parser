@@ -1,5 +1,6 @@
 ![App Screenshot](https://s1.hostingkartinok.com/uploads/images/2022/01/2d20913e1702ee4fd3618e0f72998aaa.png)
-
+## Description 
+Facebook parser - программа написанная на python для поиска объявлений с ключевыми словами в указанных вами сообществах. Может использоваться к примеру для нахождения объявлений по поиску раоты, квартиры и тд...
 ## Installation
 **1) Download and enter to the project directory**
 ```bash
